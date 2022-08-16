@@ -1,0 +1,16 @@
+<div class="content-padding">
+  <div class="nl-padding">
+    <h2>Fazer busca:</h2>
+    <%= form_for :user, url: q_path, method: :get do |form| %>
+      <%= form.text_field :id %>
+      <%= form.submit 'search'%>
+    <% end %>
+    <div class="nl-padding">
+    <% @photos.each do |photo| %>
+
+      <% info = @flickr.photos.getInfo(:photo_id => photo.id) %>
+      <%= image_tag Flickr.url_n(info) %>
+    <% end %>
+    </div>
+  </div>
+</div>
